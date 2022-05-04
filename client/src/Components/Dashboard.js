@@ -22,7 +22,7 @@ export default function Dashboard() {
     return (
         <DashboardMain>
         <div id='profile-section'>
-            <div id='avatar' 
+        <div id='avatar' 
             style={{backgroundImage: `url(${userDetails.avatar_url})`}}>              
             </div>
             <div>{userDetails.name}</div>

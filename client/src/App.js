@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios'
-import { Link, Routes, Route, useParams } from 'react-router-dom'
+import { Link, Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import Login from "./Components/Login.js";
 import Dashboard from "./Components/Dashboard.js";
 import { Nav, MainDiv } from "./Styles/StyledComponents.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { reset } from "./Toolkit/Slice/repoSlice.js";
+import './Styles/index.css'
 
 
 
 
 
 const initialFormData = {
-    // sensible initial values?
     userName: '',
   };
 
@@ -21,8 +21,18 @@ export default function App() {
     const [apiData, setApiData] = useState({})
     const [formData, setFormData] = useState(initialFormData);
 
+    const {isSuccess} = useSelector((state) => state.repo)
+
+
     const dispatch = useDispatch()
-    dispatch(reset())
+    const navigate = useNavigate()
+
+    function onLogout() {
+      dispatch(reset())
+      navigate('/')
+    }
+
+
 
     const onSubmit = (e, username) => {
       e.preventDefault()
@@ -42,7 +52,11 @@ export default function App() {
 
     return ( 
         <MainDiv>
-          <Nav />
+         <Nav>
+            {
+              isSuccess && <button onClick={onLogout} id="logout">Logout</button>
+            }
+          </Nav>
         <Routes path="/">
           <Route index 
           element={ 

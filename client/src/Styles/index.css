@@ -110,3 +110,13 @@
     background-size: cover;
     margin: auto;
 }
+
+#logout {
+    background-color: #24292e;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    height: 25px;
+    margin-left: 95%;
+  }
