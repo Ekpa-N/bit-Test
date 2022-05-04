@@ -13,7 +13,7 @@ const initialState = {
 
 export const getRepos = createAsyncThunk('repos/getRepos', async(code) => {
 try {
-        const theData = await axios.post('http://localhost:6020/login', {code})
+        const theData = await axios.post('/login', {code})
         return theData.data
 } catch (error) {
     console.log(error)
