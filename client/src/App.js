@@ -21,7 +21,7 @@ export default function App() {
     const [apiData, setApiData] = useState({})
     const [formData, setFormData] = useState(initialFormData);
 
-    const {isSuccess} = useSelector((state) => state.repo)
+    const {isSuccess, repos} = useSelector((state) => state.repo)
 
 
     const dispatch = useDispatch()
@@ -31,6 +31,16 @@ export default function App() {
       dispatch(reset())
       navigate('/')
     }
+
+    function repoChecker(repo) {
+      if(repo.length) {
+        navigate('/dashboard')
+      }
+    }
+
+    useEffect(()=> {
+      repoChecker(repos)
+    },[])
 
 
 
