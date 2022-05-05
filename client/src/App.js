@@ -50,7 +50,7 @@ export default function App() {
         alert("Please enter a username")
         return
       }
-        location.href = "https://github.com/login/oauth/authorize?client_id=e155f31bffc2467deb0e&login="+username+"&scope=repo"
+        location.href = "https://github.com/login/oauth/authorize?client_id=217f6181f9ee7168f380&login="+username+"&scope=repo"
     }
 
     const onNameChange = e => {

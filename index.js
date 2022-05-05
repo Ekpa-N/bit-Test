@@ -25,7 +25,7 @@ async function middleChecker(request, response, next) {
     const { code } = request.body;
     try {
         let responseData = await axios.post('https://github.com/login/oauth/access_token', {
-            client_id: "e155f31bffc2467deb0e",
+            client_id: "217f6181f9ee7168f380",
             client_secret: process.env.SECRET,
             code,
         }, {
