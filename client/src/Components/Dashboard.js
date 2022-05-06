@@ -5,13 +5,18 @@ import ReposContainer from './ReposContainer'
 import {useDispatch, useSelector} from 'react-redux'
 import { getRepos } from '../Toolkit/Slice/repoSlice'
 import '../Styles/index.css'
+import {useNavigate} from 'react-router-dom'
+import { reset } from '../Toolkit/Slice/repoSlice'
 
 export default function Dashboard() {
     const code = new URLSearchParams(location.search).get('code')
     const {repos, isLoading, isSuccess, userDetails} = useSelector((state) => state.repo)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(()=> {
-        if(!isSuccess) {
+        if (!code) {
+            navigate('/')
+        } else if(!isSuccess) {
             dispatch(getRepos(code))
         }
     },[])
